@@ -14,7 +14,7 @@
 
 <p>docker ps &#8594; mostra os container que estão rodando no momento. Adicionando o prefixo <b>-a</b> (docker ps -a) é possível ver os container que já foram criados;</p>
 
-<p>docker logs [container name or id] &#8594; permtie ver os logs gerados pelo serviço </p>
+<p>docker logs [container name or id] &#8594; permite ver os logs gerados pelo serviço </p>
 
 <p>Alguns prefixos:</p>
 <ul>
