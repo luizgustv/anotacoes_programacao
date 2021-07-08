@@ -23,6 +23,43 @@
 <li> --name &#8594; permite dar um nome ao container </li>
 </ul>
 
+<p>exemplo de uso:</p>
+```
+docker run -p6000:6379 --name redis -d redis
+```
+
+<p>docker network &#8594; rede interna do docker que ao criar, permite que containers conectados a ela se comuniquem apenas utilizando o id/nome do container (não necessitando especificar, endereço ip, porta...)
+</p>
+
+<ul>
+<li>docker network ls &#8594; lista as redes disponíveis</li>
+<li>docker network create mongo-network &#8594; cria um docker network
+</li>
+</ul>
+
+<p>exemplo de uso:</p>
+
+```
+Rodando o mongo db:
+docker run -p 27017:27017 -d \
+-e MONGO_INITDB_ROOT_USERNAME=admin \
+-e MONGO_INITDB_ROOT_PASSWORD=root \
+--name mongodb  \
+--net mongo-network \
+mongo
+
+Rodando mongo express:
+docker run -d \
+-p 8081:8081 \
+-e ME_CONFIG_MONGODB_ADMINUSERNAME= admin \
+-e ME_CONFIG_MONGODB_ADMINPASSWORD=root \
+--net mongo-network \
+--name mongo-express \
+-e ME_CONFIG_MONGODB_SERVER=mongodb \
+mongo-express
+
+ambos estão na mesma rede (mongo-network)
+```
 
 <h3>Referências utilizadas:</h3>
 
@@ -31,5 +68,3 @@
 <li><a href="https://betterprogramming.pub/how-does-docker-port-binding-work-b089f23ca4c8">Docker bind port</a></li>
 
 </ul>
-
-1:10:07
