@@ -50,8 +50,8 @@ mongo
 
 Rodando mongo express:
 docker run -d \
--p 8081:8081 \
--e ME_CONFIG_MONGODB_ADMINUSERNAME= admin \
+-p 8080:8081 \
+-e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
 -e ME_CONFIG_MONGODB_ADMINPASSWORD=root \
 --net mongo-network \
 --name mongo-express \
@@ -61,10 +61,55 @@ mongo-express
 ambos estão na mesma rede (mongo-network)
 ```
 
+<p>Também é possível estruturar os serviços que se deseja utilizar com o docker e executa-los sob um único comando. É o chamado Docker Compose, que nada mais é que um "orquestrador" de container de Dockers. Esse regimento é feito através de um arquivo chamado docker-compose (ou o nome que preferir) que está no formato YAML.
+</p>
+
+docker-compose &#8594; permite orquestrar um conjunto de containers
+
+<ul>
+<li>-f &#8594; especificar arquivo docker-compose</li>
+<li>up &#8594; startar todos os serviços que estão no arquivo</li>
+<li>down &#8594; encerra todos os serviços e remove os containers, networks utilizados</li>
+</ul>
+
+<p>Exemplo de um arquivo docker-compose:</p>
+```
+# Versão do docker-compose
+version: '3'
+# Serviços a serem containerzados
+services:
+  # Nome do serviço
+  mongodb:
+    image: mongo
+    # Reiniciar o serviço caso esse deslige por alguma razão
+    restart: always
+    # HOST:CONTAINER
+    ports:
+      - 27017:27017
+    # Variáveis utilizadas pelo serviço
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8080:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+    # mongo-express não será inicializado até o serviço mongodb inicializar
+    depends_on:
+      - mongodb
+```
+
 <h3>Referências utilizadas:</h3>
 
 <ul>
 <li> <a href="https://www.youtube.com/watch?v=3c-iBn73dDE">Docker Tutorial for Beginners [FULL COURSE in 3 Hours]</a></li>
 <li><a href="https://betterprogramming.pub/how-does-docker-port-binding-work-b089f23ca4c8">Docker bind port</a></li>
-
+<li><a href="https://hub.docker.com/">Docker Hub (para baixar imagems)</a></li>
 </ul>
+
+1:42:00
