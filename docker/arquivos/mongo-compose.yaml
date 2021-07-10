@@ -1,0 +1,28 @@
+# Versão do docker-compose
+version: '3'
+# Serviços a serem containerzados
+services:
+  # Nome do serviço
+  mongodb:
+    image: mongo
+    # Reiniciar o serviço caso esse deslige por alguma razão
+    restart: always
+    # HOST:CONTAINER
+    ports:
+      - 27017:27017
+    # Variáveis utilizadas pelo serviço
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8080:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+    # mongo-express não será inicializado até o serviço mongodb inicializar
+    depends_on:
+      - mongodb
