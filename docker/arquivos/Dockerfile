@@ -5,10 +5,9 @@ ENV ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
 
 RUN mkdir -p /home/app
 
-# copia todos arquivos/diretório do host para sua imagem. Então foi copiado os arquivos da pasta /app (server.js) e /home/app
-COPY ./app /home/app
+COPY . /home/app
 
-# set default dir so that next commands executes in /home/app dir
+# define o diretório padrão em que irão ocorrer os próximos comandos (nesse caso pro /home/app)
 WORKDIR /home/app
 
 RUN npm install
