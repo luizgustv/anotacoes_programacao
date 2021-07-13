@@ -1,6 +1,8 @@
-<h1>Docker</h1>
+<h1>Docker - anotações gerais</h1>
 
 <h3>Comandos:</h3>
+
+<h4>Docker:</h4>
 
 <p>docker pull [image] &#8594; baixar uma imagem a partir dos registros do Docker Hub;</p>
 
@@ -61,6 +63,7 @@ mongo-express
 ambos estão na mesma rede (mongo-network)
 ```
 
+<h4>Docker Compose: </h4>
 <p>Também é possível estruturar os serviços que se deseja utilizar com o docker e executa-los sob um único comando. É o chamado Docker Compose, que nada mais é que um "orquestrador" de container de Dockers. Esse regimento é feito através de um arquivo chamado docker-compose (ou o nome que preferir) que está no formato YAML.
 </p>
 
@@ -104,12 +107,57 @@ services:
       - mongodb
 ```
 
+<h4>Dockerfile</h4>
+
+<p>Além de utilizar imagens de terceiros, podemos também criar nossa própria imagem (de uma aplicação em java, por exemplo). Um dockerfile nada mais é do que um arquivo que descreve as etapas que o Docker precisa para gerar uma imagem, o que inclui a instalação de pacotes, criação de diretórios, definição de variáveis de ambiente, entre outras coisas.</p>
+
+<p>Abaixo temos uma tabela, onde
+
+|Image Enviroment Blueprint  | Dockerfile  |
+|---|---|
+| install node  | FROM node  |
+| set MONGO_DB_USERNAME=admin set MONGO_DB_USERNAME =password | ENV MONGO_DB_USERNAME=admin \ MONGO_DB_USERNAME =password |
+|create home/app folder| RUN mkdir -p /home/app|
+| copy curent folder files to /home/app| COPY . /home/app
+| start the app with: "node server.js"| CMD ["node","server.js"]
+
+Para gerar uma imagem, utilizamos o seguinte o comando:
+
+```
+docker build . -t my-app:1.0 -f /d/Programacao/anotacoes_programacao/docker/arquivos/Dockerfile
+```
+
+<p>Exemplo de imagem gerada pelo comando acima:</p>
+
+```
+FROM node:13-alpine
+
+ENV ME_CONFIG_MONGODB_ADMINUSERNAME=admin \ 
+ME_CONFIG_MONGODB_ADMINPASSWORD=password
+
+RUN mkdir -p /home/app
+
+COPY . /home/app
+
+CMD ["node","server.js"]
+```
+
+<ul>
+<li>-t &#8594; define nome e opcionalmente uma combinação de nome:tag para a imagem. No exemplo, defimos um nome para a imagem e a versão da mesma</li>
+<li>:version &#8594; define a versão da imagem</li>
+<li> . &#8594; o "dot" denota a localização dockerfile</li>
+</ul>
+
+<p>para rodar a imagem: docker run my-app:1.0</p>
+
+
+
+
 <h3>Referências utilizadas:</h3>
 
 <ul>
 <li> <a href="https://www.youtube.com/watch?v=3c-iBn73dDE">Docker Tutorial for Beginners [FULL COURSE in 3 Hours]</a></li>
 <li><a href="https://betterprogramming.pub/how-does-docker-port-binding-work-b089f23ca4c8">Docker bind port</a></li>
 <li><a href="https://hub.docker.com/">Docker Hub (para baixar imagems)</a></li>
+<li><a href="http://www.macoratti.net/19/02/dock_imgfile1.htm">Docker - Criando uma imagem com Dockerfile</a></li>
 </ul>
-
-1:42:00
