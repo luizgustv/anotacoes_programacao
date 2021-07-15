@@ -124,21 +124,26 @@ services:
 Para gerar uma imagem, utilizamos o seguinte o comando:
 
 ```
-docker build . -t my-app:1.0 -f /d/Programacao/anotacoes_programacao/docker/arquivos/Dockerfile
+docker build . -t [imagem]:[tag] -f /d/Programacao/anotacoes_programacao/docker/arquivos/Dockerfile
 ```
 
 <p>Exemplo de imagem gerada pelo comando acima:</p>
 
 ```
+#baixa a dependência node, que é a base para conseguir rodar a aplicação
 FROM node:13-alpine
 
+#setando as variáveis de ambiente
 ENV ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
     ME_CONFIG_MONGODB_ADMINPASSWORD=password
 
+#criando um novo diretório
 RUN mkdir -p /home/app
 
+#copiando todos os arquivos de onde o arquivo Dockerfile está para o diretório recém criado
 COPY . /home/app
 
+# define o diretório padrão em que irão ocorrer os próximos comandos (nesse caso pro /home/app)
 WORKDIR /home/app
 
 RUN npm install
@@ -152,9 +157,23 @@ CMD ["node", "server.js"]
 <li> . &#8594; o "dot" denota a localização dockerfile</li>
 </ul>
 
-<p>para rodar a imagem: docker run my-app:1.0</p>
+<p>para startar a imagem: </p>
+```
+docker run [imagem]
+```
 
+<p>Com o container em funcionando, podemos acessar a interface bash de um container</p>
 
+```
+comando no windows CMD:
+  docker exec -it f5f11a9f7ccd /bin/sh
+
+comando no bash:
+  docker exec -it f5f11a9f7ccd //bin/sh
+```
+
+docker registry
+publicar imagem no docker hub
 
 
 <h3>Referências utilizadas:</h3>
