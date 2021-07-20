@@ -172,9 +172,39 @@ comando no bash:
   docker exec -it f5f11a9f7ccd //bin/sh
 ```
 
+<h4>Docker Volumes</h4>
+<p>Em muitos casos queremos manter as informações obtidas em um banco de dados que é inicializado pelo docker, porém quando o container é parado e reiniciado os dados são apagados. Para evitar que isso ocorra, podemos criar volumes e armazenas as informações geradas pelo container.</p>
+
+<p>Podemos fazer tanto através do domando docker run -v, como definindo por docker-compose:</p>
+
+```
+#lista de volumes que serão usados pelo docker-compose
+volumes:
+  mongo-data:
+    #o volume será criado em uma partição do sistema que foi startado o serviço
+    driver: local
+
+#declarar uso do volume em um serviço:
+
+#Nome do serviço
+mongodb:
+  image: mongo
+  # Reiniciar o serviço caso esse deslige por alguma razão
+  restart: always
+  # HOST:CONTAINER
+  ports:
+  - 27017:27017
+  # Variáveis utilizadas pelo serviço
+  environment:
+    - MONGO_INITDB_ROOT_USERNAME=admin
+    - MONGO_INITDB_ROOT_PASSWORD=password
+  volumes:
+  #host volume name / caminho dentro do container (/data/db é o caminho padrão do mongodb para arzenar os dados salvos)
+  - mongo-data:/data/db
+```
+
 docker registry
 publicar imagem no docker hub
-
 
 <h3>Referências utilizadas:</h3>
 

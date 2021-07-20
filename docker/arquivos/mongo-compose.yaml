@@ -14,6 +14,10 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      #host volume name / caminho dentro do container (/data/db é o caminho padrão do mongodb para arzenar os dados salvos)
+      - mongo-data:/data/db
+
   mongo-express:
     image: mongo-express
     restart: always
@@ -26,3 +30,8 @@ services:
     # mongo-express não será inicializado até o serviço mongodb inicializar
     depends_on:
       - mongodb
+
+volumes:
+  mongo-data:
+    #o volume será criado em uma partição do sistema que foi startado o serviço
+    driver: local
