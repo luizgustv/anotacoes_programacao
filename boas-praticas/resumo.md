@@ -23,8 +23,6 @@
 
 <p>Dependency Rule - as camadas externas podem aceessar as mais internas, porém o contrário não existe</p>
 
-
-
 Clean Architecture
 37:40
 https://drive.google.com/drive/u/1/folders/18GE02C0EjyE46FgV5C0cx0UByxWYtR3D

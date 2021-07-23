@@ -113,13 +113,13 @@ services:
 
 <p>Abaixo temos uma tabela, onde
 
-|Image Enviroment Blueprint  | Dockerfile  |
-|---|---|
-| install node  | FROM node  |
-| set MONGO_DB_USERNAME=admin set MONGO_DB_USERNAME =password | ENV MONGO_DB_USERNAME=admin \ MONGO_DB_USERNAME =password |
-|create home/app folder| RUN mkdir -p /home/app|
-| copy curent folder files to /home/app| COPY . /home/app
-| start the app with: "node server.js"| CMD ["node","server.js"]
+Image Enviroment Blueprint  | Dockerfile
+---|---
+start the app with: "node server.js"| CMD ["node","server.js"]
+set MONGO_DB_USERNAME=admin set MONGO_DB_USERNAME =password | ENV MONGO_DB_USERNAME=admin \ MONGO_DB_USERNAME =password
+install node  | FROM node
+create home/app folder| RUN mkdir -p /home/app
+copy curent folder files to /home/app| COPY . /home/app
 
 Para gerar uma imagem, utilizamos o seguinte o comando:
 
@@ -172,6 +172,38 @@ comando no bash:
   docker exec -it f5f11a9f7ccd //bin/sh
 ```
 
+<p>Agora que conseguimos rodar a aplicação a partir de sua imagem docker, o proxímo passo poderia ser adicionar suas configurações em um docker compose e roda-los junstamente com os serviços necessários. Um problema comum é conectar os endpoints entre serviços. Por exemplo, digamos que precisamos conectar a aplicação a um banco de dados. O endpoint da aplicação foi declarado no application.properties:</p>
+
+```
+aws:
+  endpoint: "${AWS_ENDPOINT:http://localhost:8000}"
+```
+<p>O endpoint é uma variável externa ou http://localhost:8000 . Porém se utilizamos a segunda opção não obteremos sucesso.</p>
+
+```
+ poc-micronaut:
+    image: poc_micronaut_service:1.0
+    environment:
+      - AWS_ENDPOINT=http://localhost:8000
+```
+
+<p>Isso porque no docker intenamente o valor endpoint do banco de dados é diferente do que foi preenchido.</p>
+
+```
+Exemplo do endpoint interno
+Server Running: http://15c9d8622494:80
+```
+
+<p>Para corrigir essa opção algumas opções:</p>
+
+```
+Declarar como host.docker.internal:
+- AWS_ENDPOINT=http://host.docker.internal:8000
+ou
+Declarar o nome do serviço conforme foi declarado no docker-compose:
+- AWS_ENDPOINT=http://dynamodb:8000
+```
+
 <h4>Docker Volumes</h4>
 <p>Em muitos casos queremos manter as informações obtidas em um banco de dados que é inicializado pelo docker, porém quando o container é parado e reiniciado os dados são apagados. Para evitar que isso ocorra, podemos criar volumes e armazenas as informações geradas pelo container.</p>
 
@@ -202,9 +234,6 @@ mongodb:
   #host volume name / caminho dentro do container (/data/db é o caminho padrão do mongodb para arzenar os dados salvos)
   - mongo-data:/data/db
 ```
-
-docker registry
-publicar imagem no docker hub
 
 <h3>Referências utilizadas:</h3>
 
