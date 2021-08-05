@@ -235,6 +235,10 @@ mongodb:
   - mongo-data:/data/db
 ```
 
+docker secrets
+
+docker script
+
 <h3>Referências utilizadas:</h3>
 
 <ul>
@@ -242,4 +246,5 @@ mongodb:
 <li><a href="https://betterprogramming.pub/how-does-docker-port-binding-work-b089f23ca4c8">Docker bind port</a></li>
 <li><a href="https://hub.docker.com/">Docker Hub (para baixar imagems)</a></li>
 <li><a href="http://www.macoratti.net/19/02/dock_imgfile1.htm">Docker - Criando uma imagem com Dockerfile</a></li>
+<li><a href="https://stack.desenvolvedor.expert/appendix/docker/">Tutorial Docker</a></li>
 </ul>
