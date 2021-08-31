@@ -235,10 +235,6 @@ mongodb:
   - mongo-data:/data/db
 ```
 
-docker secrets
-
-docker script
-
 <h3>Referências utilizadas:</h3>
 
 <ul>

@@ -29,3 +29,6 @@ https://drive.google.com/drive/u/1/folders/18GE02C0EjyE46FgV5C0cx0UByxWYtR3D
 
 <h3>Referências:</h3>
 <p><a href="https://www.objective.com.br/insights/clean-architecture-com-mvvm/">Clean Architecture com MVVM: o que é, vantagens e como utilizar em aplicações Android</a></p>
+
+
+https://balta.io/artigos/clean-code#o-que-%C3%A9-o-clean-code

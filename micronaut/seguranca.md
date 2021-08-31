@@ -22,7 +22,6 @@
 
 <img src="arquivos\seguranca\configs_05.png"/>
 
-
 https://guides.micronaut.io/latest/micronaut-security-jwt-gradle-kotlin.html
 
 micronaut.security.intercept-url-map
