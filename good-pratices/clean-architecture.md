@@ -1,6 +1,4 @@
-<h1>Arquiteturas</h1>
-
-<h3>Clean Architecture</h3>
+<h1>Clean Architecture</h1>
 
 <p>Premissas:</p>
 
@@ -23,12 +21,9 @@
 
 <p>Dependency Rule - as camadas externas podem aceessar as mais internas, porém o contrário não existe</p>
 
-Clean Architecture
-37:40
-https://drive.google.com/drive/u/1/folders/18GE02C0EjyE46FgV5C0cx0UByxWYtR3D
-
 <h3>Referências:</h3>
 <p><a href="https://www.objective.com.br/insights/clean-architecture-com-mvvm/">Clean Architecture com MVVM: o que é, vantagens e como utilizar em aplicações Android</a></p>
 
+<p><a href="https://balta.io/artigos/clean-code#o-que-%C3%A9-o-clean-code">O que é clean code</a></p>
 
-https://balta.io/artigos/clean-code#o-que-%C3%A9-o-clean-code
+
