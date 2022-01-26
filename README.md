@@ -1,1 +1,1 @@
-Minha anotações sobre temas variados
+My annotations about varied themes
