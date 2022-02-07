@@ -131,11 +131,15 @@ Much better:
 
 <h2>Functions</h2>
 
-
 <ul>
 <li>Try make small functions. If it have conditions block such as if, else and while, then must have only one line. And, the most important: functions must make only one thing</li>
 
+<li>Parameters functions:
+Try use min 1 until 3 if you really need parameters in your functions. This it will help you in moment when you going to test this functions. Less parameter it will help the reader to understand more what is happening in the code.</li>
+
+
 <li></li>
+
 </ul>
 
 <h3>References</h3>
