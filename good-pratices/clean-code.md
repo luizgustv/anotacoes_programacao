@@ -1,6 +1,6 @@
 <h1>Clean Code</h1>
 
-<p>teste</p>
+<h2>Significant names</h2>
 
 <ul>
 <li>Use names that reveal your purpose</li>
@@ -115,11 +115,28 @@ Much better:
 *in this exemple, the number 5 it has been named WORK_DAYS_PEER_WEEK to make it easier in the text.
 
 ```
-<li>Avoid encodings</li>
+<li>Avoid scope's encodings in your code</li>
 
+<li>Class names</li>
+<p>Classes and objets must have names with substantive such as Customer, WikiPage, Account and AdressParser</p>
+
+<li>Method names</li>
+<p>Methods must ahve names with verbs such as Post, Payment, DeletePage or save</p>
+
+<li>Selec one word by concept</li>
+<p>Avoid to use Controller, Driver and Manager together in your code because diferentiate then can be hard</p>
 
 </ul>
 
+
+<h2>Functions</h2>
+
+
+<ul>
+<li>Try make small functions. If it have conditions block such as if, else and while, then must have only one line. And, the most important: functions must make only one thing</li>
+
+<li></li>
+</ul>
 
 <h3>References</h3>
 <p><a href="https://www.amazon.com.br/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code: A Handbook of Agile Software Craftsmanship</a> by Robert C. Martin</p>
