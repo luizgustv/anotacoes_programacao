@@ -15,7 +15,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
-      #host volume name / caminho dentro do container (/data/db é o caminho padrão do mongodb para arzenar os dados salvos)
+      #(pasta atual que está os arquivos que vão para o container) host volume name / caminho dentro do container (/data/db é o caminho padrão do mongodb para arzenar os dados salvos)
       - mongo-data:/data/db
 
   mongo-express:

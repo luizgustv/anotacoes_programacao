@@ -136,9 +136,16 @@ Much better:
 
 <li>Parameters functions:
 Try use min 1 until 3 if you really need parameters in your functions. This it will help you in moment when you going to test this functions. Less parameter it will help the reader to understand more what is happening in the code.</li>
-
-
 <li></li>
+
+
+SOLID
+* S - Single responsability principle
+* O - Open-closed principle
+* L - Liskov substitution principle
+* I - Interface  ssegregation principle
+* D - Dependency Inversion principle
+
 
 </ul>
 
