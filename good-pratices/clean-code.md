@@ -146,7 +146,5 @@ Try use min 1 until 3 if you really need parameters in your functions. This it w
 
 ## Prefer exception than return of error codes
 
-
 ### References
-
 [Clean Code: A Handbook of Agile Software Craftsmanship by Robert C. Martin](https://www.amazon.com.br/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
