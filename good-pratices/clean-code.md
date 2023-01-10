@@ -1,6 +1,6 @@
-<h1>Clean Code</h1>
+# Clean Code
 
-<h2>Significant names</h2>
+## Significant names
 
 <ul>
 <li>Use names that reveal your purpose</li>
@@ -129,25 +129,24 @@ Much better:
 </ul>
 
 
-<h2>Functions</h2>
+## Functions
 
-<ul>
-<li>Try make small functions. If it have conditions block such as if, else and while, then must have only one line. And, the most important: functions must make only one thing</li>
+- Try make small functions. If it have conditions block such as if, else and while, then must have only one line. And, the most important: functions must make only one thing
 
-<li>Parameters functions:
-Try use min 1 until 3 if you really need parameters in your functions. This it will help you in moment when you going to test this functions. Less parameter it will help the reader to understand more what is happening in the code.</li>
-<li></li>
+- Parameters functions:
+Try use min 1 until 3 if you really need parameters in your functions. This it will help you in moment when you going to test this functions. Less parameter it will help the reader to understand more what is happening in the code.
 
 
-SOLID
-* S - Single responsability principle
-* O - Open-closed principle
-* L - Liskov substitution principle
-* I - Interface  ssegregation principle
-* D - Dependency Inversion principle
+### SOLID
+- S: Single responsability principle
+- O: Open-closed principle
+- L: Liskov substitution principle
+- I: Interface  ssegregation principle
+- D: Dependency Inversion principle
+
+## Prefer exception than return of error codes
 
 
-</ul>
+### References
 
-<h3>References</h3>
-<p><a href="https://www.amazon.com.br/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882">Clean Code: A Handbook of Agile Software Craftsmanship</a> by Robert C. Martin</p>
+[Clean Code: A Handbook of Agile Software Craftsmanship by Robert C. Martin](https://www.amazon.com.br/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
