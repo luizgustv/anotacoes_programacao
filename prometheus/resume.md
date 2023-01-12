@@ -74,3 +74,8 @@ For outbound request  time:
 - Ajusting endpoint getNote() in order to return a http status 404 when the note was not found, maybe showing other errors too;
 - Search for other panels
 - Custom  metric
+
+sum(rate(http_server_requests_seconds_sum{application="$application", instance="$instance", status!~"5.."}[1m]))/sum(rate(http_server_requests_seconds_count{application="$application", instance="$instance", status!~"5.."}[1m]))
+
+max(http_server_requests_seconds_max{application="$application", instance="$instance", status!~"5.."})
+
