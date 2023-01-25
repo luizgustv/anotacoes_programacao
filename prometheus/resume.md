@@ -6,10 +6,6 @@
 - [Summary](https://prometheus.io/docs/concepts/metric_types/#summary)
 
 
-
-https://www.robustperception.io/understanding-machine-cpu-usage/
-
-
 ## Some userful metrics provided by spring:
 
 (Remmember): You need to add this dependences before):
@@ -47,12 +43,21 @@ If you want to know average duration inbound request for each status (200, 404, 
     rate( http_server_requests_seconds_sum[1m]) / rate(http_server_requests_seconds_count[1m])
 
 ```
-[But, what is rate in prometheus?](https://prometheus.io/docs/prometheus/latest/querying/functions/#rate)
+
+### But, what is rate in prometheus?
+
+[link 1](https://prometheus.io/docs/prometheus/latest/querying/functions/#rate)
+and 
+[link 2](https://mopitz.medium.com/understanding-prometheus-rate-function-15e93e44ae61)
 
 For outbound request  time:
 ```
     rate(http_client_requests_seconds_sum[1m]) / rate(http_client_requests_seconds_count[1m])
 ```
+
+### What range shoud I use wirh rate() ?
+
+[link](https://grafana.com/blog/2020/09/28/new-in-grafana-7.2-__rate_interval-for-prometheus-rate-queries-that-just-work/)
 
  ### Referencees:
 [Spring Actuator Metrics]( https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.metrics.supported.logger)
@@ -67,15 +72,10 @@ For outbound request  time:
 
 [The four types of prometheus metrics](https://tomgregory.com/the-four-types-of-prometheus-metrics/)
 
-[About prometheus rate](https://prometheus.io/docs/prometheus/latest/querying/functions/#rate)
+[CPU usage](https://www.robustperception.io/understanding-machine-cpu-usage/)
 
 
-- Create new panel in grafana in order to show errors;
-- Ajusting endpoint getNote() in order to return a http status 404 when the note was not found, maybe showing other errors too;
-- Search for other panels
-- Custom  metric
-
-sum(rate(http_server_requests_seconds_sum{application="$application", instance="$instance", status!~"5.."}[1m]))/sum(rate(http_server_requests_seconds_count{application="$application", instance="$instance", status!~"5.."}[1m]))
-
-max(http_server_requests_seconds_max{application="$application", instance="$instance", status!~"5.."})
+- Create new panel in grafana in order to show errors; OK
+- Ajusting endpoint getNote() in order to return a http status 404 when the note was not found, maybe showing other errors too; Ok
+- Search for other panels OK
 
