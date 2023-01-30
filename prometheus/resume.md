@@ -78,4 +78,3 @@ For outbound request  time:
 - Create new panel in grafana in order to show errors; OK
 - Ajusting endpoint getNote() in order to return a http status 404 when the note was not found, maybe showing other errors too; Ok
 - Search for other panels OK
-

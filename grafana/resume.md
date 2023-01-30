@@ -9,3 +9,6 @@ You can set variables like:
 
 to use in your queries like:
 ![image.png](./images/img4.png)
+
+
+### [How to configure grafana + prometheus + loki + jeager](https://github.com/thbrunzendorf/monitoring-demo)
